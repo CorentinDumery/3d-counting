@@ -1,0 +1,23 @@
+{
+    "note1": "Computed by 3D voxel carving:",
+    "crosses": 1.139573169551579,
+    "pasta":  1.054755361970354,
+    "pins": 0.28421219818060284,
+    "screws": 0.2962543712865112,
+    "semicrosses": 0.4634999679125826,
+    "lego": 4.320423128796255,
+    "note2": "Available online:",
+    "popcorn": 0.1,
+    "mms": 0.63,
+    "beans": 1.351,
+    "rice": 0.029,
+    "corn": 0.3571,
+    "pong": 33.5,
+    "note3": "Trivially calculated from geometry:",
+    "chocolates": 2.572,
+    "chickpeas": 0.2,
+    "gums": 4.188,
+    "puzzle": 0.8,
+    "beads": 0.0303,
+    "diy": 0.10366
+}
