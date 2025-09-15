@@ -31,7 +31,7 @@ ns-install-cli
 
 Check you can run the new method: `ns-train counting-splatfacto data/pasta` 
 
-3) Download [the density net weights](https://drive.google.com/file/d/1yvOVQu2dGoxsJIyX4PN-0f_tCRhZhLL-/view?usp=sharing) and [the weights for `depth_anything_v2_vitl.pth`](https://github.com/DepthAnything/Depth-Anything-V2/) and put them both in `counting-3d/weights`.
+3) Download [the density net weights](https://drive.google.com/file/d/1yvOVQu2dGoxsJIyX4PN-0f_tCRhZhLL-/view?usp=sharing) and [the weights for `depth_anything_v2_vitl.pth`](https://github.com/DepthAnything/Depth-Anything-V2/) and put them both in a `weights/` at the root of this repository.
 
 4) Download DinoV2 and DepthAnythingV2 in `ext`. For example:
 ```
