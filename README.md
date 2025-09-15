@@ -1,6 +1,6 @@
 # [ICCV25 Oral] Counting Stacked Objects
 
-From multi-view images of a stack, count the total number of objects from images of stacks! 
+From multi-view images of a stack, count the total number of objects! 
 
 [Project page](https://corentindumery.github.io/projects/stacks.html) |
 [Dataset page](https://zenodo.org/records/15609540) |
