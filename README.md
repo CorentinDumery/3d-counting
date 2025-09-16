@@ -4,7 +4,7 @@ From multi-view images of a stack, count the total number of objects!
 
 [Project page](https://corentindumery.github.io/projects/stacks.html) |
 [Dataset page](https://zenodo.org/records/15609540) |
-[stack-dataset-generation repository](https://github.com/NoaEtte/stack-dataset-generation)
+[stack-dataset-generation repository](https://github.com/Noaemien/stack-dataset-generation)
 
 **Please note**: _The current code is sufficient to run the entire pipeline on the data presented in the paper, but I plan to release additional code to help with data preprocessing and model training. However, I am currently on internship leave until December 2025. Feel free to contact me or open an issue in the meantime, and I will try my best upon my return._
 
@@ -71,7 +71,7 @@ To be added soon...
 
 ## Dataset generation
 
-Have a look at our [stack-dataset-generation repository](https://github.com/NoaEtte/stack-dataset-generation).
+Have a look at our [stack-dataset-generation repository](https://github.com/Noaemien/stack-dataset-generation).
 
 
 ## Citation
