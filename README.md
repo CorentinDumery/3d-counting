@@ -12,7 +12,7 @@ From multi-view images of a stack, count the total number of objects!
 
 This repository was tested with torch `2.1.2+cu118` and nerfstudio `1.1.5` on Ubuntu 24.04.
 
-1) Since our volume reconstruction is based on nerfstudio's implementation of 3DGS, you will need a nerfstudio environment. You can find [instructions here](https://docs.nerf.studio/quickstart/installation.html). Make sure you can run splatfacto before proceeding to the next steps: `ns-train splatfacto data/pasta`
+1) Since our volume reconstruction is based on nerfstudio's implementation of 3DGS, you will need a nerfstudio environment. You can find [instructions here](https://docs.nerf.studio/quickstart/installation.html). Make sure you can run splatfacto before proceeding to the next steps: `ns-train splatfacto --data data/pasta`
 
 Some fixes for common issues with nerfstudio:
 -   To install `tiny-cuda-nn` it may be useful to downgrade g++:
@@ -29,7 +29,7 @@ pip install -e .
 ns-install-cli
 ```
 
-Check you can run the new method: `ns-train counting-splatfacto data/pasta` 
+Check you can run the new method: `ns-train counting-splatfacto --data data/pasta` 
 
 3) Download [the density net weights](https://drive.google.com/file/d/1yvOVQu2dGoxsJIyX4PN-0f_tCRhZhLL-/view?usp=sharing) and [the weights for `depth_anything_v2_vitl.pth`](https://github.com/DepthAnything/Depth-Anything-V2/) and put them both in a `weights/` at the root of this repository.
 
