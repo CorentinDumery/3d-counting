@@ -6,8 +6,6 @@ From multi-view images of a stack, count the total number of objects!
 [Dataset page](https://zenodo.org/records/15609540) |
 [stack-dataset-generation repository](https://github.com/Noaemien/stack-dataset-generation)
 
-**Please note**: _The current code is sufficient to run the entire pipeline on the data presented in the paper, but I plan to release additional code to help with data preprocessing and model training. However, I am currently on internship leave until December 2025. Feel free to contact me or open an issue in the meantime, and I will try my best upon my return._
-
 ## Installation
 
 This repository was tested with torch `2.1.2+cu118` and nerfstudio `1.1.5` on Ubuntu 24.04.
@@ -62,8 +60,33 @@ This repository brought a few minor changes to the original method, so in some c
 
 ## Data preparation
 
-To be added soon... 
-We will provide detailed instructions and preprocessing scripts. Most importantly, the data structure needs to follow the structure of our released data and the cameras need to be at metric scale.
+Important requirements:
+- Each scene must have multi-view images, a reference measurement in centimeters to adjust for scale, and known volume of a single object v. If v is not known, it can be estimated using a separate set of images containing a single object and the same volume estimation used in `process_scene.sh`.
+- This step will require the nerfstudio environment described above, plus:
+```
+pip install trimesh hydra scikit-image
+
+mkdir weights
+mkdir ext
+cd ext
+git clone git@github.com:facebookresearch/sam2.git
+cd ..
+```
+- Download `sam2.1_hiera_large.pt` and put it in the `weights` folder
+
+
+Data preparation: 
+- Organize your data as follows: `path/to/folder/`, where folder contains `path/to/folder/input1`, `path/to/folder/input2`, etc, and `input1` contains all images for this scene.
+- Write your `path/to/folder/` in script `data_preparation/data_prep.sh` and run it from the root of this repository: `. data_preparation/data_prep.sh` 
+ - Important: to scale the cameras, we use a simple heuristic to measure a distance in 3DGS space, and compare it with your reference measurement. When 3DGS is training, use the provided UI to measure the distance in 3DGS that matches your reference measurement:
+   - Open the viewer at `http://localhost:7007/`.
+   - Once reconstruction is satisfying, click "Pause Training".
+   - Press the Click button, then click at the start of the measurement.
+   - Rotate the view, then press Click and click and the end of the measurement. The distance in camera scale is printed in the terminal.
+   - Save that number, then interrupt the reconstruction with CTRL+C.
+   - Enter this number and the real-world measurement when prompted.
+ - Select the OBJECTS only with left click. Use right clicks for negative prompts. Then close the window, and the segmentation will be propagated to other frames.
+ - If the objects are in a container, repeat this step for the container+objects. Segment both of them together, and close the window. Please make sure that the segmentations are satisfying before proceeding.
 
 ## Training
 
@@ -84,5 +107,17 @@ If this repository is helpful to you, please consider citing the associated publ
    author = {Dumery, Corentin and Ett{\'e}, Noa and Fan, Aoxiang and Li, Ren and Xu, Jingyi and Le, Hieu and Fua, Pascal},
    booktitle = {Proceedings of the IEEE/CVF International Conference on Computer Vision},
    year = {2025}
+}
+```
+
+The [released dataset](https://zenodo.org/records/15609540) can also directly be cited with:
+```
+@misc{dumery2025stackcounting,
+   title = {StackCounting Dataset},
+   author = {Dumery, Corentin and Ett{\'e}, Noa and D'Alessandro, Adriano},
+   year = {2025}
+   publisher = {Zenodo},
+   doi = {10.5281/zenodo.15609540},
+   url = {https://doi.org/10.5281/zenodo.15609540},
 }
 ```

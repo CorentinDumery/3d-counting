@@ -70,5 +70,9 @@ fi
 if [ $COMBINE_RESULTS -eq 1 ]; then
     basename_no_digit=$(echo "$base_name" | sed 's/[0-9]//g')
     unit=$(jq -r --arg key "$basename_no_digit" '.[$key] // empty' "data/unit_volumes.json")
+    # if unit is not found, read it from info.json under "unit_volume"
+    if [ -z "$unit" ]; then
+        unit=$(jq -r '.unit_volume // empty' "$folder/info.json")
+    fi
     python counting_3d/combine_values.py --unit-volume $unit --path $folder_masked --exp-name $MODEL_EXP_NAME 
 fi
